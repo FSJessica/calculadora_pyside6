@@ -7,11 +7,9 @@ from PySide6.QtWidgets import QApplication
 from styles import setupTheme
 from buttons import ButtonGrid
 from variables import WINDOW_ICON_PATH
+from info import Info
 
 if __name__ =='__main__':
-    #snake_case
-    #PascalCase
-    #camelCase
 
     #Cria a aplicação
     app= QApplication(sys.argv)
@@ -23,19 +21,18 @@ if __name__ =='__main__':
     window.setWindowIcon(icon)
     app.setWindowIcon(icon)
 
+    #Info
+    info = Info ('Sua conta')
+    window.addWidgetToVLayout(info)
+
     #Display
     display = Display()
     display.setPlaceholderText('Digite algo')
     window.addWidgetToVLayout(display)
 
     #Grid
-    buttonsGrid = ButtonGrid(display)
+    buttonsGrid = ButtonGrid(display, info)
     window.vlayout.addLayout(buttonsGrid)
-
-    # buttonsGrid.addWidget(Button('0'), 0, 0)
-    # buttonsGrid.addWidget(Button('1'), 0, 1)
-    # buttonsGrid.addWidget(Button('2'), 0, 2)
-    # buttonsGrid.addWidget(Button('3'), 1, 0)
 
 
     #Executa tudo
